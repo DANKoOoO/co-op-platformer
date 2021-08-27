@@ -58,6 +58,7 @@ public class Player2Controller : MonoBehaviour
     {
         if (collision.tag == "Collectable")
         {
+            SoundManager.PlaySound("feather");
             Destroy(collision.gameObject);
             pera += 1;
             FindObjectOfType<NextLvlScript>().DodajPero();
@@ -111,6 +112,7 @@ public class Player2Controller : MonoBehaviour
         //skok
         if (Input.GetButtonDown("Jump2") && (coli.IsTouchingLayers(ground) || coli.IsTouchingLayers(otherPlayer)) && !coli.IsTouchingLayers(edge) && !coli2.IsTouchingLayers(edge) && canJump)
         {
+            SoundManager.PlaySound("jump");
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             state = State.jumping;
             canJump = false;
